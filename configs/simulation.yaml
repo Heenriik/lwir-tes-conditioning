@@ -1,0 +1,36 @@
+# Configuration file for run_sim.py (forward-model validation only).
+# The main conditioning sweep grid lives in scripts/run_conditioning.py
+# (BAND_COUNTS = [3, 5, 7, 10, 15, 20, 30, 50]); the noise/hybrid analyses
+# define their own grids in their respective scripts. The five values
+# below are a representative sanity-check subset for the Jacobian
+# validation step in run_sim.py.
+# Always verify after any change:
+#   - Jacobian rank (should equal N for all materials)
+#   - singular values (not just condition number — check the full spectrum)
+
+# Band-count anchors (full justification in THESIS_Draft.md §2.2.1):
+#   N=3  — minimum viable for TES (Gillespie et al. 1998); HADAR shot-noise
+#          analysis (Bao et al. 2023, SI Fig. S7).
+#   N=5  — ASTER TES operational standard, NEDT 0.3 K
+#          (Gillespie et al. 1998, IEEE TGRS 36(4)).
+#   N=10 — HADAR prototype-1 hardware (Bao et al. 2023, SI §SIV.B);
+#          natural LWIR feature width (Bao et al. 2023, SI §SIII.B).
+#   N=20 — below Gillespie's 30-band MMD-scatter plateau.
+#   N=50 — past Gillespie's 30-band saturation; approaches the
+#          54-channel HADAR-Street synthetic database
+#          (Bao et al. 2023, SI §SIII.A).
+# Intermediate fillers N=7, 15, 30 (in the full sweep grid) give
+# spectral resolution between anchors; N=30 specifically targets
+# Gillespie's plateau point.
+
+simulation:
+  temperature: 300
+  band_counts: [3, 5, 10, 20, 50]
+  wavelength_range: [8e-6, 14e-6]
+
+noise:
+  snr_db: 30       # Not in use currently
+
+# run_conditioning.py runs through uniform / random / targeted mode for band placement, this is for run_sim.py only
+experiment:
+  mode: uniform

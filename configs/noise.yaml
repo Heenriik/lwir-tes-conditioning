@@ -1,0 +1,20 @@
+noise:
+  default_nedt_k: 0.1       # Noise Equivalent Temperature Difference in K
+  sigma_L: 1.0e-4           # Radiance noise floor W/m2/sr/m, not in use
+
+sweep:
+  nedt_range: [0.03, 2.0]   # NEDT sweep range in K, based on (Shao et al. 2020) and a worst-case scenario.
+  nedt_steps: 25
+  snr_range: [10, 60]       # SNR sweep range in dB. A complement to NEDT, covering very noisy to very clean scenarios.
+  snr_steps: 20
+
+# Using N=10 bands, Δλ_band = (14μm − 8μm) / (N − 1) = 6×10⁻⁶ / 9 ≈ 667 nm --> 1 band
+# Consistent with the (Shao et al. 2020) recommendation to keep center wavelength shift within 1 band for normal applications.
+calibration:
+  delta_lambda_range_m: [-5.0e-7, 5.0e-7]   # +-500 nm shift range in meters, within the 667 nm
+  delta_lambda_steps: 21
+  fwhm_nominal_m: 1.0e-7      # Not used, stated in (shao et al. 2020) as only having minor effect on inversion error
+
+monte_carlo:
+  n_trials: 200             # MC trials per (NEDT, delta_lambda) cell
+  seed: 42                   # try different seeds to look for monte carlo noise in results (42, 7, 123)
