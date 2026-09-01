@@ -97,7 +97,7 @@ python scripts/regenerate_tex_tables.py        # Regenerate all LaTeX tables
 python scripts/plot_all.py
 ```
 
-To tweak titles, colours or font sizes, edit the `plot_*()` functions in `src/utils/plotting.py` and rerun only `scripts/plot_all.py`. No need to recompute the experiments.
+To tweak titles, colours or font sizes, edit the `plot_*()` functions in `src/utils/plotting.py` and rerun only `scripts/plot_all.py`.
 
 ---
 
