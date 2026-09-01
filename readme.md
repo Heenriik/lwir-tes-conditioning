@@ -146,8 +146,8 @@ and Hybrid Physics–ML Inversion for LWIR Temperature–Emissivity Separation.
 Master's thesis, NTNU, Department of Engineering Cybernetics.
 ```
 
-A link to the published thesis:
-[Clickable Text](https://hdl.handle.net/11250/5562621)
+The thesis is available here:
+[NTNU Open – Master's Thesis](https://hdl.handle.net/11250/5562621)
 
 
 ---
